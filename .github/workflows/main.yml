@@ -1,15 +1,21 @@
-name: Clone repository
+name: Clone Repository
 
 on:
-  workflow_dispatch:  # 手动触发
+  workflow_dispatch:
 
 jobs:
   clone:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Clone repository
-        run: git clone https://github.com/kiddin9/openwrt-packages.git
+      - name: Clone openwrt-packages repository
+        uses: actions/checkout@v2
+        with:
+          repository: kiddin9/openwrt-packages
+          ref: main
+          token: ${{ secrets.REPO_TOKEN }}
+
+      - name: Copy files to target repository
+        run: cp -r openwrt-packages/* oppg/
