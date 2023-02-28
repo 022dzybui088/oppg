@@ -15,7 +15,7 @@ jobs:
         with:
           repository: kiddin9/openwrt-packages
           ref: main
-          token: ${{ secrets.REPO_TOKEN }}
+          token: ${{ secrets.ACCESS_TOKEN }}
 
       - name: Copy files to target repository
         run: cp -r openwrt-packages/* oppg/
