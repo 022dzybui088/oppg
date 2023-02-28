@@ -1,0 +1,15 @@
+name: Clone repository
+
+on:
+  workflow_dispatch:  # 手动触发
+
+jobs:
+  clone:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Clone repository
+        run: git clone https://github.com/kiddin9/openwrt-packages.git
